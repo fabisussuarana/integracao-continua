@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
       - 'back-end/**'
+  workflow_call: #Habilitando este worflow para ser chamado
 jobs:
   test:
     runs-on: ubuntu-latest
