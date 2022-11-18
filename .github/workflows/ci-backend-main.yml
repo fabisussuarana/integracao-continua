@@ -5,7 +5,9 @@ on:
       - 'main'
     paths:
       - 'back-end/**'
-      
+  pull_request:
+    paths:
+      - 'back-end/**'
 jobs:
   test:
     runs-on: ubuntu-latest
