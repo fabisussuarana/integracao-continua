@@ -1,0 +1,20 @@
+name: CI Front
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'front-end/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 15.x
+      - name: Teste
+        run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - name: Compilar
+        run: npm run build --prod
