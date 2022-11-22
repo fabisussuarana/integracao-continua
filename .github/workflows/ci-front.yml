@@ -5,7 +5,11 @@ on:
       - 'main'
     paths:
       - 'front-end/**'
-      
+ pull_request:
+    paths:
+      - 'front-end/**'
+  workflow_call:
+  
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with: 
-          node-version: 16.x
+          node-version: '16'
       - name: Instalar dependencias
         run: npm clean install
       - name: Teste
@@ -33,4 +37,8 @@ jobs:
       - name: Build
         working-directory: front-end/
         run: npm run build --prod
-    
+      - name: Cache App
+        uses: actions/cache@v3
+        with:
+          path: front-end/dist/
+          key: build-${{github.sha}}
