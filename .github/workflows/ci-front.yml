@@ -5,9 +5,6 @@ on:
       - 'main'
     paths:
       - 'front-end/**'
- pull_request:
-    paths:
-      - 'front-end/**'
   workflow_call:
   workflow_dispatch:
   
